@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Add Item — SmartPantry{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+
+    <!-- Back link -->
+    <a href="{{ url_for('home') }}" class="sp-back-link d-inline-flex align-items-center mb-4">
+      <i class="bi bi-arrow-left me-2"></i>Back to Pantry
+    </a>
+
+    <div class="card sp-form-card">
+      <div class="card-body p-4 p-md-5">
+
+        <div class="mb-4">
+          <h1 class="sp-page-title mb-1">Add Ingredient</h1>
+          <p class="text-muted mb-0">Record a new item and its expiry date.</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('add_item') }}" novalidate id="addItemForm">
+
+          <!-- Item name -->
+          <div class="mb-3">
+            <label for="item_name" class="form-label sp-label">
+              Item Name <span class="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              class="form-control sp-input"
+              id="item_name"
+              name="item_name"
+              placeholder="e.g. Milk, Eggs, Bread"
+              autocomplete="off"
+              required
+            />
+            <div class="invalid-feedback">Please enter an item name.</div>
+          </div>
+
+          <!-- Purchase date -->
+          <div class="mb-3">
+            <label for="purchase_date" class="form-label sp-label">
+              Purchase Date <span class="text-danger">*</span>
+            </label>
+            <input
+              type="date"
+              class="form-control sp-input"
+              id="purchase_date"
+              name="purchase_date"
+              required
+            />
+            <div class="invalid-feedback">Please select a purchase date.</div>
+          </div>
+
+          <!-- Expiry date -->
+          <div class="mb-4">
+            <label for="expiry_date" class="form-label sp-label">
+              Expiry Date <span class="text-danger">*</span>
+            </label>
+            <input
+              type="date"
+              class="form-control sp-input"
+              id="expiry_date"
+              name="expiry_date"
+              required
+            />
+            <div class="invalid-feedback" id="expiryFeedback">
+              Please select an expiry date.
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <button type="submit" class="btn sp-btn-add flex-grow-1">
+              <i class="bi bi-plus-circle me-2"></i>Add to Pantry
+            </button>
+            <a href="{{ url_for('home') }}" class="btn sp-btn-cancel">
+              Cancel
+            </a>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Quick tip -->
+    <div class="sp-tip mt-3">
+      <i class="bi bi-lightbulb me-2"></i>
+      <span>Items expiring within <strong>3 days</strong> are highlighted in yellow.</span>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Set purchase date default to today
+  document.addEventListener("DOMContentLoaded", () => {
+    const today = new Date().toISOString().split("T")[0];
+    const purchaseInput = document.getElementById("purchase_date");
+    if (!purchaseInput.value) purchaseInput.value = today;
+  });
+</script>
+{% endblock %}
