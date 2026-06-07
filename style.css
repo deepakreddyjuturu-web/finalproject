@@ -1,0 +1,422 @@
+/* ============================================================
+   SmartPantry — style.css
+   A clean, professional stylesheet built on top of Bootstrap 5.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   CSS custom properties
+   ---------------------------------------------------------- */
+:root {
+  --sp-green:       #2d8a4e;
+  --sp-green-light: #e8f5ed;
+  --sp-yellow:      #b97d12;
+  --sp-yellow-light:#fef9e7;
+  --sp-red:         #c0392b;
+  --sp-red-light:   #fdecea;
+  --sp-navy:        #1a2b4a;
+  --sp-navy-mid:    #243659;
+  --sp-accent:      #3a86ff;
+  --sp-bg:          #f5f7fa;
+  --sp-card-border: #e4e8ef;
+  --sp-text-main:   #1e2d40;
+  --sp-text-muted:  #6c7a8d;
+  --sp-radius:      10px;
+  --sp-shadow:      0 2px 10px rgba(26, 43, 74, 0.07);
+}
+
+/* ----------------------------------------------------------
+   Base
+   ---------------------------------------------------------- */
+body {
+  background-color: var(--sp-bg);
+  color: var(--sp-text-main);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
+  flex: 1;
+}
+
+/* ----------------------------------------------------------
+   Navbar
+   ---------------------------------------------------------- */
+.sp-navbar {
+  background-color: var(--sp-navy);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.sp-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff !important;
+}
+
+.sp-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-weight: 500;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.sp-navbar .nav-link:hover,
+.sp-navbar .nav-link.active {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ----------------------------------------------------------
+   Primary action button
+   ---------------------------------------------------------- */
+.sp-btn-add {
+  background-color: var(--sp-accent);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.9rem;
+  transition: background-color 0.15s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sp-btn-add:hover {
+  background-color: #2970e0;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.sp-btn-cancel {
+  border: 1.5px solid var(--sp-card-border);
+  color: var(--sp-text-muted);
+  background: #fff;
+  border-radius: 7px;
+  font-weight: 500;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.sp-btn-cancel:hover {
+  border-color: #aab2bf;
+  color: var(--sp-text-main);
+}
+
+.sp-btn-delete {
+  background: transparent;
+  border: 1.5px solid #e4c0bd;
+  color: #c0392b;
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.sp-btn-delete:hover {
+  background-color: var(--sp-red-light);
+  color: var(--sp-red);
+  border-color: #c0392b;
+}
+
+/* ----------------------------------------------------------
+   Flash alerts
+   ---------------------------------------------------------- */
+.sp-alert {
+  border-left: 4px solid transparent;
+  border-radius: var(--sp-radius);
+}
+
+.sp-alert.alert-success { border-left-color: var(--sp-green); }
+.sp-alert.alert-danger  { border-left-color: var(--sp-red); }
+.sp-alert.alert-warning { border-left-color: var(--sp-yellow); }
+
+/* ----------------------------------------------------------
+   Page title
+   ---------------------------------------------------------- */
+.sp-page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--sp-navy);
+  letter-spacing: -0.02em;
+}
+
+/* ----------------------------------------------------------
+   Statistics cards
+   ---------------------------------------------------------- */
+.sp-stat-card {
+  border: 1.5px solid var(--sp-card-border);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow);
+  transition: transform 0.15s;
+}
+
+.sp-stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.sp-stat-card .card-body {
+  padding: 1.2rem;
+}
+
+.sp-stat-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.sp-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.sp-stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sp-text-muted);
+}
+
+.sp-stat-total   { background-color: #eef2ff; border-color: #c7d2fe; }
+.sp-stat-total   .sp-stat-icon,
+.sp-stat-total   .sp-stat-number { color: #4338ca; }
+
+.sp-stat-safe    { background-color: var(--sp-green-light); border-color: #a7d7b8; }
+.sp-stat-safe    .sp-stat-icon,
+.sp-stat-safe    .sp-stat-number { color: var(--sp-green); }
+
+.sp-stat-soon    { background-color: var(--sp-yellow-light); border-color: #f0d080; }
+.sp-stat-soon    .sp-stat-icon,
+.sp-stat-soon    .sp-stat-number { color: var(--sp-yellow); }
+
+.sp-stat-expired { background-color: var(--sp-red-light); border-color: #f0b8b4; }
+.sp-stat-expired .sp-stat-icon,
+.sp-stat-expired .sp-stat-number { color: var(--sp-red); }
+
+/* ----------------------------------------------------------
+   Colour legend
+   ---------------------------------------------------------- */
+.sp-legend {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.sp-legend-item   { color: var(--sp-text-muted); }
+.sp-legend-safe   i { color: var(--sp-green); }
+.sp-legend-soon   i { color: var(--sp-yellow); }
+.sp-legend-expired i { color: var(--sp-red); }
+
+/* ----------------------------------------------------------
+   Inventory table
+   ---------------------------------------------------------- */
+.sp-table-card {
+  border: 1.5px solid var(--sp-card-border);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow);
+  overflow: hidden;
+}
+
+.sp-table {
+  font-size: 0.9rem;
+}
+
+.sp-table thead th {
+  background-color: #f0f2f7;
+  color: var(--sp-text-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1.5px solid var(--sp-card-border);
+  padding: 0.85rem 1rem;
+}
+
+.sp-table tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.sp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Row tints */
+.sp-row-safe     { background-color: #fff; }
+.sp-row-safe:hover { background-color: var(--sp-green-light); }
+
+.sp-row-soon     { background-color: #fffdf0; }
+.sp-row-soon:hover { background-color: var(--sp-yellow-light); }
+
+.sp-row-expired  { background-color: #fff8f8; }
+.sp-row-expired:hover { background-color: var(--sp-red-light); }
+
+/* Status badges */
+.sp-status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.sp-badge-safe    { background-color: var(--sp-green-light); color: var(--sp-green); }
+.sp-badge-soon    { background-color: var(--sp-yellow-light); color: var(--sp-yellow); }
+.sp-badge-expired { background-color: var(--sp-red-light);   color: var(--sp-red); }
+
+/* ----------------------------------------------------------
+   Add item form
+   ---------------------------------------------------------- */
+.sp-form-card {
+  border: 1.5px solid var(--sp-card-border);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow);
+}
+
+.sp-label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--sp-text-main);
+  margin-bottom: 0.35rem;
+}
+
+.sp-input {
+  border: 1.5px solid #d0d7e3;
+  border-radius: 7px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.92rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sp-input:focus {
+  border-color: var(--sp-accent);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.15);
+  outline: none;
+}
+
+.sp-back-link {
+  color: var(--sp-text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.sp-back-link:hover {
+  color: var(--sp-accent);
+}
+
+/* ----------------------------------------------------------
+   Recipe cards
+   ---------------------------------------------------------- */
+.sp-recipe-card {
+  border: 1.5px solid var(--sp-card-border);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.sp-recipe-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(26, 43, 74, 0.11);
+}
+
+.sp-recipe-icon {
+  font-size: 1.8rem;
+  color: var(--sp-accent);
+}
+
+.sp-recipe-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sp-navy);
+  margin-bottom: 0.4rem;
+}
+
+.sp-recipe-pill {
+  background-color: #eef2ff;
+  color: #4338ca;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.18rem 0.6rem;
+  border-radius: 50px;
+}
+
+/* ----------------------------------------------------------
+   Ingredient pills (recipes page header)
+   ---------------------------------------------------------- */
+.sp-ingredient-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  border: 1.5px solid var(--sp-card-border);
+  border-radius: var(--sp-radius);
+}
+
+.sp-pill-label {
+  color: var(--sp-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.sp-pill {
+  background-color: var(--sp-green-light);
+  color: var(--sp-green);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+}
+
+/* ----------------------------------------------------------
+   Empty states
+   ---------------------------------------------------------- */
+.sp-empty-state {
+  background-color: #fff;
+  border: 1.5px dashed #c8d0dc;
+  border-radius: var(--sp-radius);
+}
+
+.sp-empty-icon {
+  font-size: 3.2rem;
+  color: #bbc5d6;
+}
+
+/* ----------------------------------------------------------
+   Tip bar
+   ---------------------------------------------------------- */
+.sp-tip {
+  display: flex;
+  align-items: center;
+  background-color: #eef2ff;
+  color: #4338ca;
+  border-radius: 7px;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------
+   Footer
+   ---------------------------------------------------------- */
+.sp-footer {
+  border-top: 1px solid var(--sp-card-border);
+  background-color: #fff;
+}
