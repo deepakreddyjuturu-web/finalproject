@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes — SmartPantry{% endblock %}
+
+{% block content %}
+
+<!-- Page header -->
+<div class="mb-4">
+  <h1 class="sp-page-title mb-1">Recipe Suggestions</h1>
+  <p class="text-muted mb-0">
+    Meals you can make right now based on what's in your pantry.
+  </p>
+</div>
+
+<!-- Available ingredients -->
+{% if available %}
+  <div class="sp-ingredient-pills mb-4">
+    <span class="sp-pill-label me-2">
+      <i class="bi bi-basket me-1"></i>In your pantry:
+    </span>
+    {% for name in available %}
+      <span class="sp-pill">{{ name }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- Recipe cards -->
+{% if suggestions %}
+  <div class="row g-3">
+    {% for recipe in suggestions %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card sp-recipe-card h-100">
+          <div class="card-body">
+            <div class="sp-recipe-icon mb-2">
+              <i class="bi bi-egg-fried"></i>
+            </div>
+            <h5 class="sp-recipe-title">{{ recipe.name }}</h5>
+            <p class="text-muted small mb-3">{{ recipe.description }}</p>
+            <div class="sp-recipe-ingredients">
+              <span class="sp-pill-label d-block mb-1 small">
+                <i class="bi bi-check2-all me-1"></i>Requires:
+              </span>
+              <div class="d-flex flex-wrap gap-1">
+                {% for ing in recipe.ingredients %}
+                  <span class="sp-recipe-pill">{{ ing }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+  <!-- Empty state -->
+  <div class="sp-empty-state text-center py-5">
+    <i class="bi bi-journal-x sp-empty-icon"></i>
+    <h4 class="mt-3 mb-2">No recipes available</h4>
+    <p class="text-muted mb-4">
+      Add more ingredients to your pantry to unlock recipe suggestions.<br>
+      Try adding items like Egg, Bread, Milk, Rice, or Tomato.
+    </p>
+    <a href="{{ url_for('add_item') }}" class="btn sp-btn-add">
+      <i class="bi bi-plus-lg me-1"></i>Add Ingredients
+    </a>
+  </div>
+{% endif %}
+
+<!-- Recipe hint -->
+<div class="sp-tip mt-4">
+  <i class="bi bi-info-circle me-2"></i>
+  <span>Only non-expired items are considered when suggesting recipes.</span>
+</div>
+
+{% endblock %}
