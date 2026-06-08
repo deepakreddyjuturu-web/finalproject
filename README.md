@@ -177,8 +177,8 @@ git commit -m "Final cleanup and README"
 
 ## Authors
 
-- Student A — backend routes, database design, API endpoint  
-- Student B — templates, CSS styling, recipe logic
+- Bhavadeeshwar — backend routes, database design, API endpoint  
+- Deepak — templates, CSS styling, recipe logic
 
 
 
